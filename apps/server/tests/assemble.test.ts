@@ -73,6 +73,7 @@ describe("assemble() happy path", () => {
     const body = (await meta.json()) as any;
     expect(Array.isArray(body.dimensions)).toBe(true);
     expect(body.dimensions.length).toBeGreaterThan(0);
+    expect(body.dimensions.some((dimension: { id?: string }) => dimension.id === "memory_success_bias")).toBe(true);
   });
 
   it(
