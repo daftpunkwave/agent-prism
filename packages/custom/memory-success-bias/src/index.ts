@@ -52,6 +52,7 @@ export const memorySuccessBiasDimension: CustomDimension = {
       if (wantSuccess === null) return undefined;
       const recall = input.recall;
       if (recall === undefined) return undefined;
+      // Only recall is patched: the fold keeps the current render caps.
       return { recall: filterEpisodic(recall, wantSuccess) };
     },
   },

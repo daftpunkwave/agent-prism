@@ -16,8 +16,9 @@
 
 ## 新增一个
 
-复制现有包，改 id 与选项，替换钩子，注册，并在 `apps/server/package.json` 加上 workspace
-依赖。完整配方、四个钩子槽位、driver 覆盖表与约束见
+复制现有包，改 id 与选项，替换钩子，注册，在 `apps/server/package.json` 加上 workspace
+依赖，并在 `tsconfig.tests.json` 加 path 映射（server 测试会启动组合根，该配置通过显式
+路径解析 workspace 包）。完整配方、四个钩子槽位、driver 覆盖表与约束见
 [`docs/reference/add-a-custom-dimension.zh.md`](../../docs/reference/add-a-custom-dimension.zh.md)。
 
 ## 关闭

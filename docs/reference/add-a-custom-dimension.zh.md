@@ -93,7 +93,8 @@ export const myDimension: CustomDimension = {
    ```
 
    并在 `apps/server/package.json` 添加 `"@agentprism/<name>": "workspace:*"`。
-   注册由 `ARENA_CUSTOM_DIMENSIONS=off` 统一开关。
+   还要在 `tsconfig.tests.json` 加 path 映射：server 测试会启动组合根，该配置通过
+   显式路径解析 workspace 包。注册由 `ARENA_CUSTOM_DIMENSIONS=off` 统一开关。
 
 4. **`pnpm install`**、重新构建、重启。`pnpm typecheck` 与
    `node scripts/check-boundaries.mjs` 必须保持绿色。

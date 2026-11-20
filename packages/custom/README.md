@@ -19,7 +19,9 @@ the tree, and reading one package tells you everything about it.
 ## Add one
 
 Copy an existing package, rename the id and options, swap the hook, register it,
-and add the workspace dependency to `apps/server/package.json`. The full recipe,
+add the workspace dependency to `apps/server/package.json`, and add the package to
+the `tsconfig.tests.json` path map (server tests boot the composition root, and
+that config resolves workspace packages through explicit paths). The full recipe,
 the four hook slots, the driver coverage table, and the constraints live in
 [`docs/reference/add-a-custom-dimension.md`](../../docs/reference/add-a-custom-dimension.md).
 

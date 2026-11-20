@@ -102,7 +102,9 @@ patch) changes nothing.
    ```
 
    and add `"@agentprism/<name>": "workspace:*"` to `apps/server/package.json`.
-   Registration is gated by `ARENA_CUSTOM_DIMENSIONS=off`.
+   Add the package to the `tsconfig.tests.json` path map too: server tests boot the
+   composition root, and that config resolves workspace packages through explicit
+   paths. Registration is gated by `ARENA_CUSTOM_DIMENSIONS=off`.
 
 4. **`pnpm install`**, rebuild, restart. `pnpm typecheck` and
    `node scripts/check-boundaries.mjs` must stay green.

@@ -173,6 +173,8 @@ export async function assemble(): Promise<RuntimeComponents> {
   // settings field, so a root .env value counts. Registration is idempotent
   // per descriptor identity, so a repeated assemble() is safe.
   if (settings.customDimensionsEnabled) {
+    // memory_success_bias precedes memory_top_n: hooks fold in registration
+    // order, so a later top-N truncation applies to the filtered set.
     registerCustomDimensions([
       summaryBudgetDimension,
       memorySuccessBiasDimension,

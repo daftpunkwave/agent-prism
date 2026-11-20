@@ -34,10 +34,20 @@ Arena → 维度 "memory_success_bias"         Builder → 积木块 "Memory suc
 
 在组合根（`apps/server/src/assemble.ts`）与其他自定义维度一起注册；在
 `apps/server/package.json` 加上 `"@agentprism/memory-success-bias": "workspace:*"`；
-执行 `pnpm install`。`ARENA_CUSTOM_DIMENSIONS=off` 可随全部自定义维度一起关闭。
+在 `tsconfig.tests.json` 加 path 映射（server 测试 typecheck 通过它解析 workspace
+包）；执行 `pnpm install`。`ARENA_CUSTOM_DIMENSIONS=off` 可随全部自定义维度一起关闭。
 
+两个维度同时启用时，把本维度注册在 `memory_top_n` **之前**：钩子按注册顺序折叠，
+top-N 截断才会作用在过滤后的集合上。
 请与内置 `memory` 维度（`episodic` 或 `full`）搭配使用：设为 `none` 或 `semantic`
 时没有 episodic 召回可过滤。
+
+## 限制
+
+内置运行路径调用 `recallEpisodic` 时只取很小的条数（3），所以过滤也会改变挂载
+条数：`success` / `failure` 可能比 `both` 挂得更少。请把它当成“混合比例”轴，
+而不是受控的“只测结果类型”实验；若要分离结果类型与条数，请在固定挂载条数下比较
+（例如把 `both` 下采样到相同条数），或改用能先召回足够候选再过滤的记忆模块。
 
 ## 照抄它
 
