@@ -158,6 +158,9 @@
       "@agentprism/memory-top-n": [
         "./packages/custom/memory-top-n/src/index.ts"
       ],
+      "@agentprism/memory-success-bias": [
+        "./packages/custom/memory-success-bias/src/index.ts"
+      ],
       "@agentprism/summary-budget": [
         "./packages/custom/summary-budget/src/index.ts"
       ],

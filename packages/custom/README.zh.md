@@ -8,6 +8,7 @@
 |---|---|---|---|
 | [`summary-budget`](summary-budget/README.zh.md) | `summary_budget` | `contextTuning` | 摘要策略保留多少历史摘要（2k / 5k / 8k token） |
 | [`memory-top-n`](memory-top-n/README.zh.md) | `memory_top_n` | `memory` | 有多少条召回记忆进入 prompt（前 3 / 前 10 / 全部） |
+| [`memory-success-bias`](memory-success-bias/README.zh.md) | `memory_success_bias` | `memory` | 哪些召回经历进入 prompt（成功 / 失败 / 两者） |
 | [`tool-replay`](tool-replay/README.zh.md) | `tool_replay` | `messages` | 哪些历史 tool 结果回放（全部 / 省略只读 / 只留可变操作） |
 
 每个包自带 README（英文 + `.zh.md`），写明取值表、所用钩子与限制——新增维度不需要改动仓库
@@ -15,8 +16,9 @@
 
 ## 新增一个
 
-复制现有包，改 id 与选项，替换钩子，注册，并在 `apps/server/package.json` 加上 workspace
-依赖。完整配方、四个钩子槽位、driver 覆盖表与约束见
+复制现有包，改 id 与选项，替换钩子，注册，在 `apps/server/package.json` 加上 workspace
+依赖，并在 `tsconfig.tests.json` 加 path 映射（server 测试会启动组合根，该配置通过显式
+路径解析 workspace 包）。完整配方、四个钩子槽位、driver 覆盖表与约束见
 [`docs/reference/add-a-custom-dimension.zh.md`](../../docs/reference/add-a-custom-dimension.zh.md)。
 
 ## 关闭

@@ -24,6 +24,7 @@ import {
 } from "@agentprism/application";
 import { buildComparisonReport, extractNarrativeText, judgeAnswers, judgeAnswersAsync, type ReportDeps } from "@agentprism/evaluation";
 import { listCustomDimensionRows, registerCustomDimensions } from "@agentprism/arena-dimensions";
+import { memorySuccessBiasDimension } from "@agentprism/memory-success-bias";
 import { memoryTopNDimension } from "@agentprism/memory-top-n";
 import { summaryBudgetDimension } from "@agentprism/summary-budget";
 import { toolReplayDimension } from "@agentprism/tool-replay";
@@ -172,7 +173,14 @@ export async function assemble(): Promise<RuntimeComponents> {
   // settings field, so a root .env value counts. Registration is idempotent
   // per descriptor identity, so a repeated assemble() is safe.
   if (settings.customDimensionsEnabled) {
-    registerCustomDimensions([summaryBudgetDimension, memoryTopNDimension, toolReplayDimension]);
+    // memory_success_bias precedes memory_top_n: hooks fold in registration
+    // order, so a later top-N truncation applies to the filtered set.
+    registerCustomDimensions([
+      summaryBudgetDimension,
+      memorySuccessBiasDimension,
+      memoryTopNDimension,
+      toolReplayDimension,
+    ]);
   }
 
   // Crash debris sweep: an atomic write that died between the tmp write and the

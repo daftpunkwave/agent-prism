@@ -9,6 +9,7 @@ pinnable baseline field — no frontend change required.
 |---|---|---|---|
 | [`summary-budget`](summary-budget/README.md) | `summary_budget` | `contextTuning` | How much digested history the summary strategy keeps (2k / 5k / 8k tokens) |
 | [`memory-top-n`](memory-top-n/README.md) | `memory_top_n` | `memory` | How many recalled memories reach the prompt (top 3 / top 10 / all) |
+| [`memory-success-bias`](memory-success-bias/README.md) | `memory_success_bias` | `memory` | Which recalled experiences reach the prompt (successes / failures / both) |
 | [`tool-replay`](tool-replay/README.md) | `tool_replay` | `messages` | Which past tool results replay (all / skip read results / writes only) |
 
 Every package carries its own README (English + `.zh.md`) with the value table, the
@@ -18,7 +19,9 @@ the tree, and reading one package tells you everything about it.
 ## Add one
 
 Copy an existing package, rename the id and options, swap the hook, register it,
-and add the workspace dependency to `apps/server/package.json`. The full recipe,
+add the workspace dependency to `apps/server/package.json`, and add the package to
+the `tsconfig.tests.json` path map (server tests boot the composition root, and
+that config resolves workspace packages through explicit paths). The full recipe,
 the four hook slots, the driver coverage table, and the constraints live in
 [`docs/reference/add-a-custom-dimension.md`](../../docs/reference/add-a-custom-dimension.md).
 

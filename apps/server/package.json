@@ -48,6 +48,7 @@
     "@agentprism/memory-episodic": "workspace:*",
     "@agentprism/memory-semantic": "workspace:*",
     "@agentprism/memory-service": "workspace:*",
+    "@agentprism/memory-success-bias": "workspace:*",
     "@agentprism/memory-top-n": "workspace:*",
     "@agentprism/persistence": "workspace:*",
     "@agentprism/provider-catalog": "workspace:*",
