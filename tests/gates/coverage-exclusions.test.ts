@@ -23,6 +23,7 @@ const REPO_ROOT = join(import.meta.dirname, "..", "..");
 const LOGIC_BARRELS = [
   "packages/custom/tool-replay/src/index.ts",
   "packages/custom/memory-top-n/src/index.ts",
+  "packages/custom/memory-success-bias/src/index.ts",
   "packages/custom/summary-budget/src/index.ts",
   "apps/web/src/i18n/catalogs/index.ts",
   "apps/web/src/i18n/content/guide/index.ts",
