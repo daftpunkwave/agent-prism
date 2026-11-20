@@ -9,6 +9,7 @@ pinnable baseline field — no frontend change required.
 |---|---|---|---|
 | [`summary-budget`](summary-budget/README.md) | `summary_budget` | `contextTuning` | How much digested history the summary strategy keeps (2k / 5k / 8k tokens) |
 | [`memory-top-n`](memory-top-n/README.md) | `memory_top_n` | `memory` | How many recalled memories reach the prompt (top 3 / top 10 / all) |
+| [`memory-success-bias`](memory-success-bias/README.md) | `memory_success_bias` | `memory` | Which recalled experiences reach the prompt (successes / failures / both) |
 | [`tool-replay`](tool-replay/README.md) | `tool_replay` | `messages` | Which past tool results replay (all / skip read results / writes only) |
 
 Every package carries its own README (English + `.zh.md`) with the value table, the

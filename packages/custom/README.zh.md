@@ -8,6 +8,7 @@
 |---|---|---|---|
 | [`summary-budget`](summary-budget/README.zh.md) | `summary_budget` | `contextTuning` | 摘要策略保留多少历史摘要（2k / 5k / 8k token） |
 | [`memory-top-n`](memory-top-n/README.zh.md) | `memory_top_n` | `memory` | 有多少条召回记忆进入 prompt（前 3 / 前 10 / 全部） |
+| [`memory-success-bias`](memory-success-bias/README.zh.md) | `memory_success_bias` | `memory` | 哪些召回经历进入 prompt（成功 / 失败 / 两者） |
 | [`tool-replay`](tool-replay/README.zh.md) | `tool_replay` | `messages` | 哪些历史 tool 结果回放（全部 / 省略只读 / 只留可变操作） |
 
 每个包自带 README（英文 + `.zh.md`），写明取值表、所用钩子与限制——新增维度不需要改动仓库
