@@ -15,6 +15,8 @@
  *
  * Env scrub policy: BACKEND_HOST, API_TOKEN, MCP_SERVERS are scrubbed in
  * beforeEach and restored in afterEach so one case cannot leak into another.
+ * ARENA_CUSTOM_DIMENSIONS is scrubbed too: the meta assertion below pins the
+ * default registration, not whatever the developer's shell happens to export.
  */
 
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
@@ -24,7 +26,7 @@ import { DimensionRouter } from "@agentprism/arena-dimensions";
 // Env scrub helpers
 // ---------------------------------------------------------------------------
 
-const SCRUBBED = ["BACKEND_HOST", "API_TOKEN", "MCP_SERVERS"] as const;
+const SCRUBBED = ["BACKEND_HOST", "API_TOKEN", "MCP_SERVERS", "ARENA_CUSTOM_DIMENSIONS"] as const;
 const saved: Record<string, string | undefined> = {};
 
 function scrubEnv(): void {
